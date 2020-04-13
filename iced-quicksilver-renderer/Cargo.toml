@@ -1,0 +1,63 @@
+[package]
+name = "iced_quicksilver_renderer"
+version = "0.2.0"
+authors = ["Héctor Ramón Jiménez <hector0193@gmail.com>"]
+edition = "2018"
+description = "A quicksilver renderer for Iced"
+license = "MIT AND OFL-1.1"
+repository = "https://github.com/hecrj/iced"
+
+[dependencies]
+quicksilver = "0.3.22"
+derivative = "2.1.1"
+
+# iced_native = "0.2.0"
+[dependencies.iced_native]
+version = "0.2.0"
+git = "https://github.com/SafariMonkey/iced"
+branch = "fix-event-stream-on-web"
+
+# iced_style = "0.1.0"
+[dependencies.iced_style]
+version = "0.1.0"
+git = "https://github.com/SafariMonkey/iced"
+branch = "fix-event-stream-on-web"
+
+# [features]
+# svg = ["resvg"]
+# canvas = ["lyon"]
+
+# [dependencies]
+# quicksilver = "0.3.22"
+# wgpu_glyph = "0.7"
+# glyph_brush = "0.6"
+# raw-window-handle = "0.3"
+# glam = "0.8"
+# font-kit = "0.4"
+# log = "0.4"
+# guillotiere = "0.4"
+
+# [dependencies.iced_native]
+# version = "0.2"
+# path = "../native"
+
+# [dependencies.iced_style]
+# version = "0.1"
+# path = "../style"
+
+# [dependencies.image]
+# version = "0.22"
+# optional = true
+
+# [dependencies.resvg]
+# version = "0.8"
+# features = ["raqote-backend"]
+# optional = true
+
+# [dependencies.lyon]
+# version = "0.15"
+# optional = true
+
+# [package.metadata.docs.rs]
+# rustdoc-args = ["--cfg", "docsrs"]
+# all-features = true
