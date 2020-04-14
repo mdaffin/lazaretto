@@ -16,3 +16,8 @@ quicksilver = { git = "https://github.com/SafariMonkey/quicksilver", branch = "v
 version = "0.2.0"
 git = "https://github.com/SafariMonkey/iced"
 branch = "fix-event-stream-on-web"
+
+[workspace]
+members = [
+    "iced-quicksilver-renderer",
+]
