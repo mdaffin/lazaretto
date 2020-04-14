@@ -1,5 +1,5 @@
 [package]
-name = "iced-quicksilver-test"
+name = "lazaretto"
 version = "0.1.0"
 authors = ["Charlton Rodda <charlton.rodda@gmail.com>"]
 edition = "2018"
@@ -9,7 +9,7 @@ edition = "2018"
 [dependencies]
 iced_quicksilver_renderer = { path = "./iced-quicksilver-renderer" }
 env_logger = "0.7"
-quicksilver = "0.3.22"
+quicksilver = { git = "https://github.com/SafariMonkey/quicksilver", branch = "version-0.3-wasm-bindgen-support" }
 
 # iced_native = "0.2.0"
 [dependencies.iced_native]

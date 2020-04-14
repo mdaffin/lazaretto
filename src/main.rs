@@ -144,7 +144,7 @@ impl State for Application {
 fn main() {
     // Run with Application as the event handler, with a window title of 'Draw Geometry' and a
     // size of (800, 600)
-    run::<Application>("Draw Geometry", Vector::new(800, 600), Settings::default());
+    run::<Application>("Lazaretto", Vector::new(800, 600), Settings::default());
 }
 
 fn convert_event(event: &QsEvent) -> Option<IcedEvent> {
