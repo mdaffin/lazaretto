@@ -1,4 +1,6 @@
-use crate::{Defaults, Primitive};
+use std::sync::Arc;
+
+use crate::{text, Defaults, Primitive, Settings};
 
 #[cfg(any(feature = "image", feature = "svg"))]
 use crate::image::{self, Image};
@@ -7,7 +9,8 @@ use iced_native::{self, MouseCursor};
 
 use quicksilver::{
     geom::{Rectangle, Vector},
-    graphics::{Background, Color},
+    graphics::{Background, Color, Font},
+    lifecycle::Asset,
     lifecycle::Window,
 };
 
@@ -17,15 +20,20 @@ mod widget;
 ///
 /// [`iced`]: https://github.com/hecrj/iced
 /// [`quicksilver`]: https://github.com/ryanisaacg/quicksilver
-#[derive(Debug)]
-pub struct Renderer {}
+#[derive(Derivative)]
+#[derivative(Debug)]
+pub struct Renderer {
+    text_pipeline: text::Pipeline,
+}
 
 impl Renderer {
     /// Creates a new [`Renderer`].
     ///
     /// [`Renderer`]: struct.Renderer.html
-    pub fn new() -> Self {
-        Renderer {}
+    pub fn new(settings: Settings) -> Self {
+        let text_pipeline = text::Pipeline::new(settings.default_font);
+
+        Self { text_pipeline }
     }
 
     /// Draws the provided primitives in the given [`Target`].
@@ -62,16 +70,25 @@ impl Renderer {
                     self.draw_primitive(window, primitive)
                 }
             }
-            // Primitive::Text {
-            //     content,
-            //     center,
-            //     color,
-            //     size,
-            //     font,
-            //     image_cache,
-            // } => {}
+            Primitive::Text {
+                content,
+                bounds,
+                color,
+                size,
+                font,
+                horizontal_alignment,
+                vertical_alignment,
+            } => {
+                let image = self.text_pipeline.to_image(
+                    content,
+                    iced_col_to_qs(color),
+                    *size,
+                    *font,
+                );
+                window.draw(&iced_rect_to_qs(bounds), Background::Img(&image));
+            }
             Primitive::Quad {
-                bounds: bounds,
+                bounds,
                 background,
                 border_width,
                 border_color,

@@ -31,7 +31,7 @@
 extern crate derivative;
 
 pub mod defaults;
-// pub mod settings;
+pub mod settings;
 // pub mod triangle;
 pub mod widget;
 // pub mod window;
@@ -40,7 +40,7 @@ mod primitive;
 // mod quad;
 mod renderer;
 // mod target;
-// mod text;
+mod text;
 // mod transformation;
 // mod viewport;
 
@@ -49,7 +49,7 @@ mod renderer;
 pub use defaults::Defaults;
 pub use primitive::Primitive;
 pub use renderer::Renderer;
-// pub use settings::Settings;
+pub use settings::Settings;
 // pub use target::Target;
 // pub use viewport::Viewport;
 

@@ -83,13 +83,13 @@ impl Controls {
                         Column::new()
                             .padding(10)
                             .spacing(10)
-                            // .push(Text::new("Background color").color(Color::WHITE))
+                            .push(Text::new("Background color").color(Color::WHITE))
                             .push(sliders)
-                            // .push(
-                            //     Text::new(format!("{:?}", background_color))
-                            //         .size(14)
-                            //         .color(Color::WHITE),
-                            // ),
+                            .push(
+                                Text::new(format!("{:?}", background_color))
+                                    .size(14)
+                                    .color(Color::WHITE),
+                            ),
                     ),
             )
             .into()

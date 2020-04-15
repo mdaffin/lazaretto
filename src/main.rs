@@ -10,7 +10,7 @@ use quicksilver::{
     input::ButtonState as QsButtonState,
     input::MouseButton as QsMouseButton,
     input::MouseCursor as QsMouseCursor,
-    lifecycle::{run, Event as QsEvent, Settings, State, Window},
+    lifecycle::{run, Event as QsEvent, Settings as QsSettings, State, Window},
     Result,
 };
 
@@ -23,7 +23,7 @@ use iced_native::{
     Cache, Event as IcedEvent, MouseCursor as IcedMouseCursor, Size, UserInterface,
 };
 
-use iced_quicksilver_renderer::{Primitive, Renderer};
+use iced_quicksilver_renderer::{Primitive, Renderer, Settings};
 
 // A unit struct that we're going to use to run the Quicksilver functions
 // If we wanted to store persistent state, we would put it in here.
@@ -45,7 +45,7 @@ impl State for Application {
         // Initialize iced
         let mut events = Vec::new();
         let mut cache = Some(Cache::default());
-        let mut renderer = Renderer::new();
+        let mut renderer = Renderer::new(Settings::default());
         let mut output = (Primitive::None, IcedMouseCursor::OutOfBounds);
 
         // Initialize scene and GUI controls
@@ -144,7 +144,7 @@ impl State for Application {
 fn main() {
     // Run with Application as the event handler, with a window title of 'Draw Geometry' and a
     // size of (800, 600)
-    run::<Application>("Lazaretto", Vector::new(800, 600), Settings::default());
+    run::<Application>("Lazaretto", Vector::new(800, 600), QsSettings::default());
 }
 
 fn convert_event(event: &QsEvent) -> Option<IcedEvent> {

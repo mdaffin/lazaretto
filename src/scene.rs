@@ -7,7 +7,7 @@ pub struct Scene {
 impl Scene {
     pub fn new() -> Scene {
         Scene {
-            background_color: Color::BLACK,
+            background_color: Color::from_hex("#335577"),
         }
     }
 

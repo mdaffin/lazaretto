@@ -1,7 +1,6 @@
 use crate::{Primitive, Renderer};
 use iced_native::{
-    text, Color, Font, HorizontalAlignment, MouseCursor, Rectangle, Size,
-    VerticalAlignment,
+    text, Color, Font, HorizontalAlignment, MouseCursor, Rectangle, Size, VerticalAlignment,
 };
 
 use std::f32;
@@ -9,15 +8,23 @@ use std::f32;
 impl text::Renderer for Renderer {
     const DEFAULT_SIZE: u16 = 20;
 
-    fn measure(
-        &self,
-        content: &str,
-        size: u16,
-        font: Font,
-        bounds: Size,
-    ) -> (f32, f32) {
-        self.text_pipeline
-            .measure(content, f32::from(size), font, bounds)
+    fn measure(&self, content: &str, size: u16, font: Font, bounds: Size) -> (f32, f32) {
+        // TODO: Make this not render the whole thing just to measure it.
+        //       Maybe there's some library that can do it on native + web.
+
+        // self.text_pipeline
+        //     .measure(content, f32::from(size), font, bounds)
+        let quicksilver::geom::Vector { x, y } = self
+            .text_pipeline
+            .to_image(
+                content,
+                quicksilver::graphics::Color::BLACK,
+                f32::from(size),
+                font,
+            )
+            .area()
+            .size();
+        (x, y)
     }
 
     fn draw(
