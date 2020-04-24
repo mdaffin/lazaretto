@@ -20,4 +20,5 @@ branch = "fix-event-stream-on-web"
 [workspace]
 members = [
     "iced-quicksilver-renderer",
+    "algorithm",
 ]
